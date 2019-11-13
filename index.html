@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>SAFEFOOD</title>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+   <link rel="stylesheet" href="mycss.css">
+   <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
+</head>
+
+<body>
+   <div id="app">
+      <transition name="whiteback">
+         <video v-if="!whiteback" autoplay muted loop id="myVideo">
+            <source src="resource/back3.mp4" type="video/mp4">
+         </video>
+      </transition>
+
+      <transition name="loginwindow">
+         <div v-if="loginwindow" class="loginwindowblackback" @click="loginwindow=false">
+         </div>
+      </transition>
+
+      <transition name="loginwindow">
+         <div v-if="loginwindow" class="loginwindow">
+            <div class="loginwindowleft"> 
+                  <h1>Login</h1>
+                  <form>
+                        <label class="textgrey" for="">ID</label><br>
+                        <input type="text" class="logininputbox"><br>
+                        <label class="textgrey" for="">PASSWORD</label><br>
+                        <input type="text" class="logininputbox">      
+                        <br>
+                        <button value="LOGIN">LOGIN</button>
+                        <button value="SUBMIT">SUBMIT</button>
+                  </form>      
+            </div>
+            <div class="loginwindowright">
+            </div>
+         </div>
+      </transition>
+
+      <!-- Main외 창 전환 -->
+      <transition name="whiteback">
+         <div v-if="!whiteback" class="back">
+         </div>
+      </transition>
+
+      <transition name="whiteback">
+         <div v-if="whiteback" class="menuwhiteback">
+         </div>
+      </transition>
+
+      <transition name="whiteback">
+         <div v-if="whiteback" class="headerback">
+         </div>
+      </transition>
+
+      <div id="" class="container">
+         <!-- Menu -->
+         <div class="mainheader">
+            <div class="floatleft headermenu textgreen">
+               <span @click="whiteback=false"><b>SAFEFOOD</b></span>
+            </div>
+            <transition name="whitebackfont">
+               <div class="floatleft headermenu">
+                  <span @click="whiteback=true">NOTICE</span>
+               </div>
+            </transition>
+            <transition name="whitebackfont">
+               <div class="floatleft headermenu">
+                  <span @click="whiteback=true">FOODLIST</span>
+               </div>
+            </transition>
+            <transition name="whitebackfont">
+               <div class="floatleft headermenu">
+                  <span @click="whiteback=true">MY EAT</span>
+               </div>
+            </transition>
+
+            <transition name="whitebackfont">
+               <div class="floatright headermenu">
+                  <span @click="loginwindow=true">LOGIN</span>
+               </div>
+            </transition>
+
+            <transition name="whiteback">
+               <div v-if="whiteback" class="floatright headermenu">
+                  <input id="headersearchbox" type="text" placeholder="INPUT">
+                  <span class="glyphicon glyphicon-search"></span>
+               </div>
+            </transition>
+
+         </div>
+
+         <!-- Main Title -->
+         <div class="title">
+            <h1>SAFEFOOD</h1>
+            <h2>WHAT WE PROVIDE, FOOD FOR HEALTH</h2>
+         </div>
+
+         <div id="mainsearch">
+            <transition name="whiteback">
+               <div v-if="!whiteback">
+                  <input id="mainsearchbox" type="text" placeholder="FOOD">
+               </div>
+            </transition>
+         </div>
+
+         <div class="row">
+            <div class="foodbox col-md-3 col-sm-3">
+               <div class="innerfoodbox">
+                  <div>
+                     <img src="resource/진라면컵매운맛.jpg" width="100%">
+                  </div>
+                  <h4 class="textgreen">ITEM 1</h4>
+                  <span>Description<br></span>
+                  <span class="textgrey">NONGSIM</span>
+               </div>
+            </div>
+            <div class="foodbox col-md-3 col-sm-3">
+               <div class="innerfoodbox">
+                  <div>
+                     <img src="resource/진라면컵매운맛.jpg" width="100%">
+                  </div>
+                  <h4 class="textgreen">ITEM 1</h4>
+                  <span>Description<br></span>
+                  <span>dd</span>
+               </div>
+            </div>
+            <div class="foodbox col-md-3 col-sm-3">
+               <div class="innerfoodbox">
+                  <div>
+                     <img src="resource/진라면컵매운맛.jpg" width="100%">
+                  </div>
+                  <h4 class="textgreen">ITEM 1</h4>
+                  <span>Description<br></span>
+                  <span>dd</span>
+               </div>
+            </div>
+            <div class="foodbox col-md-3 col-sm-3">
+               <div class="innerfoodbox">
+                  <div>
+                     <img src="resource/진라면컵매운맛.jpg" width="100%">
+                  </div>
+                  <h4 class="textgreen">ITEM 1</h4>
+                  <span>Description<br></span>
+                  <span>dd</span>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+</body>
+<script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+<script>
+   let vi = new Vue({
+      el: "#app",
+      data: {
+         menushow: true,
+         whiteback: false,
+         loginwindow: false
+      },
+      methods: {
+         showLogin() {
+            console.log("LoginShow");
+            this.loginwindow = true;
+         }
+      },
+   })
+</script>
+
+</html>
